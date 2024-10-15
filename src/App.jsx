@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import MyComponent from "./components/learn/Mycomponent";
 import {FirstComponent,SecondComponent} from "./components/learn/SecondComponent.jsx";
+import './components/learn/style.css'
 
 
 
