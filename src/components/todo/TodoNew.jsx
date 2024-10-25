@@ -1,5 +1,8 @@
 
-const TodoNew=()=>{
+const TodoNew=(props)=>{
+    console.log(">>>",props)
+    const {addNewTodo}=props;
+    // addNewTodo(name)
     return (
         <div className="todo-new">
             <input type="text"/>
