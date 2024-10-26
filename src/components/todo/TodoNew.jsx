@@ -1,11 +1,12 @@
 import {useRef, useState} from "react";
 const TodoNew=(props)=>{
-    const [valueInput,setValueInput]=useState("");
+    const [valueInput,setValueInput]=useState("vui long nhap");
     const {addNewTodo}=props
 
 
     const handClick=()=>{
         addNewTodo(valueInput)
+        setValueInput("");
     }
     const handChage=(name)=>{
         setValueInput(name);
@@ -14,6 +15,7 @@ const TodoNew=(props)=>{
         <div className="todo-new">
             <input type="text"
             onChange={(event)=>handChage(event.target.value)}
+                   value={valueInput}
             />
             <button style={{cursor:"pointer"}} onClick={handClick}>Add</button>
             <div>
