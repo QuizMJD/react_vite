@@ -1,21 +1,24 @@
-
+import {useRef, useState} from "react";
 const TodoNew=(props)=>{
-    console.log(">>>",props)
-    const {addNewTodo}=props;
-    // addNewTodo(name)
+    const [valueInput,setValueInput]=useState("");
+    const {addNewTodo}=props
+
+
     const handClick=()=>{
-        alert("click me")
+        addNewTodo(valueInput)
     }
     const handChage=(name)=>{
-        console.log(">>>hand on change",name)
+        setValueInput(name);
     }
-
     return (
         <div className="todo-new">
             <input type="text"
             onChange={(event)=>handChage(event.target.value)}
             />
             <button style={{cursor:"pointer"}} onClick={handClick}>Add</button>
+            <div>
+                My text input is = {valueInput}
+            </div>
 
 
         </div>
