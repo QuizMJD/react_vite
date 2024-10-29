@@ -1,6 +1,6 @@
 import {useRef, useState} from "react";
 const TodoNew=(props)=>{
-    const [valueInput,setValueInput]=useState("vui long nhap");
+    const [valueInput,setValueInput]=useState("hello");
     const {addNewTodo}=props
 
 
