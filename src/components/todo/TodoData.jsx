@@ -1,17 +1,21 @@
-const TodoData = (props) => {
-     const {todoList}=props;
 
-    return (
+const TodoData = (props) => {
+     const {todoList,deleteTodo}=props;
+
+    const deleteClick=(id)=> {
+        deleteTodo(id)
+
+    }
+     return (
         <div className="todo-data">
             {todoList.map((item,index)=>{
                 return(
-                    <div className={`todo-item ${index}`} key={index}>
+                    <div className={`todo-item ${index}`} key={item.id} >
                         <div>{item.name}</div>
-                        <button>Delete</button>
+                        <button onClick={()=>deleteClick(item.id)}  >Delete</button>
                     </div>)
             })}
             <div>
-                {/*{JSON.stringify(props.todoList)}*/}
 
             </div>
         </div>

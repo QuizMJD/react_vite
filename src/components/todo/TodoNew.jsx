@@ -2,15 +2,11 @@ import {useRef, useState} from "react";
 const TodoNew=(props)=>{
     const [valueInput,setValueInput]=useState("hello");
     const {addNewTodo}=props
-
-
     const handClick=()=>{
         addNewTodo(valueInput)
         setValueInput("");
     }
-    const handChage=(name)=>{
-        setValueInput(name);
-    }
+
     return (
         <div className="todo-new">
             <input type="text"
