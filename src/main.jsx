@@ -1,8 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import {App, TodoApp} from './App.jsx'
-
-
+import App from './App.jsx'
 
 import {
     createBrowserRouter,
@@ -13,6 +11,7 @@ import RegisterPage from "./pages/register.jsx";
 import ProductsPage from "./pages/products.jsx";
 import "./styles/global.css"
 import UserPage from "./pages/User.jsx";
+import TodoApp from "./components/todo/TodoApp.jsx";
 const router = createBrowserRouter([
     {
         path: "/",
