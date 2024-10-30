@@ -18,10 +18,6 @@ const App = () => {
     const deleteTodo=(id)=>{
         const newTodo=todoList.filter(item=>item.id !==id)
         setTodoList(newTodo)
-        // delete(item){
-        //     const data = this.state.data.filter(i => i.id !== item.id)
-        //     this.setState({data})
-        // }
 
     }
 
