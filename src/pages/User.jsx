@@ -2,13 +2,13 @@ import React from "react";
 import Header from "../components/layout/header.jsx";
 import Footer from "../components/layout/footer.jsx";
 
-const ProductsPage = () => {
+const UserPage = () => {
     return (
         <>  <Header/>
-            <div>product page</div>
+            <div>register page</div>
             <Footer/>
         </>
 
     )
 }
-export default ProductsPage
+export default UserPage
