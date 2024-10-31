@@ -12,7 +12,6 @@ const App = () => {
 
         <>
             <Header/>
-
             <Outlet/>
             <Footer/>
         </>
