@@ -11,10 +11,16 @@ const UserForm = () => {
     const handleSubmit = async () => {
        const res =await createUserAPI(fullName, email, password, phone)
         console.log(res)
+
         if(res.data){
             notification.success({
                 message: "create user",
                 description: "tạo user thành công"
+            })
+        }else {
+            notification.error({
+                message: "error user",
+                description: JSON.stringify(res.message)
             })
         }
 
