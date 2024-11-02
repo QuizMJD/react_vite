@@ -12,6 +12,7 @@ const UserForm = () => {
        const res =await createUserAPI(fullName, email, password, phone)
         console.log(res)
 
+
         if(res.data){
             notification.success({
                 message: "create user",

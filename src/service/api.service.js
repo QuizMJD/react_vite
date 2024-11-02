@@ -12,6 +12,12 @@ const createUserAPI =(fullName,email,password,phone) => {
     return axiosCustomize.post(URL_BACKEND,data)
 }
 const updateUserAPI =() => {
+}
+const fetchAllUserAPI =() => {
+    const URL_BACKEND = "/api/v1/user";
+    return axiosCustomize.get(URL_BACKEND)
+
 
 }
-export { createUserAPI, updateUserAPI };
+
+export { createUserAPI, updateUserAPI, fetchAllUserAPI };
