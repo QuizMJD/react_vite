@@ -2,12 +2,13 @@ import {Button, Input, Modal, notification} from "antd";
 import {useState} from "react";
 import {createUserAPI} from "../../service/api.service.js";
 
-const UserForm = () => {
+const UserForm = (props) => {
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [phone, setPhone] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const {loadUser}=props;
     // const [handleOk, setHandleOk] = useState(false);
     // const [handleCancel, setHandleCancel] = useState(false);
 
@@ -22,6 +23,7 @@ const UserForm = () => {
             }
             )
             resetAndModal()
+            await loadUser();
         }else {
             notification.error({
                 message: "error user",
@@ -38,6 +40,7 @@ const UserForm = () => {
         setEmail("");
         setPassword("");
         setPhone("");
+
     }
 
         return (
