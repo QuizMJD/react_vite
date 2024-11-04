@@ -1,14 +1,31 @@
 import { Space, Table, Tag } from 'antd';
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import {red} from "@ant-design/colors";
+import UpdateUserModal from "./update.user.modal.jsx";
+import {useState} from "react";
 
 const UserTable = (props) => {
     const {user} = props;
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    // const handleClick=() =>{
+    //
+    //     console.log("helllllll");
+    // }
+
     const columns = [
         {
             title: 'Id',
-            dataIndex: '_id'
+            dataIndex: '_id',
+            render: (_, record) => {
+                return(
+                    <a href="#">Invite {record._id}</a>
+                )
+            },
 
         },
+
         {
             title: 'Full Name',
             dataIndex: 'fullName'
@@ -18,7 +35,17 @@ const UserTable = (props) => {
             title: 'Email',
             dataIndex: 'email'
 
-        }
+        },
+        {
+            title: 'Action',
+            key: 'action',
+            render: (_, record) => (
+                < div style={{cursor:"pointer" , display: "flex", gap : "20px"}} >
+                    <EditOutlined style={{color:"orange"}} onClick={()=>setIsModalOpen(true)}/>
+                    <DeleteOutlined style={{color:"red"}} />
+                </div>
+            ),
+        },
     ];
 
 
@@ -26,10 +53,17 @@ const UserTable = (props) => {
 
 
 
-    return (<Table columns={columns}
+    return (<>
+            <Table columns={columns}
                    dataSource={user}
                    rowKey={"_id"}
+            />
+            <UpdateUserModal
+                isModalOpen={isModalOpen}
+                setIsModalOpen={setIsModalOpen}
 
-    />)
+            />
+        </>
+    )
 }
 export default UserTable;

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import UserTable from "../components/user/user.table.jsx";
 import UserForm from "../components/user/user.form.jsx";
 import {fetchAllUserAPI} from "../service/api.service.js";
+import UpdateUserModal from "../components/user/update.user.modal.jsx";
 
 const UserPage = () => {
 
@@ -28,6 +29,7 @@ const UserPage = () => {
             <UserTable
                 user={user}
             />
+
         </div>
 
 
