@@ -25,7 +25,9 @@ const UserTable = (props) => {
                            onClick={()=>{
                             setDataDetail(record);
                             setIsDetailOpen(true);
+                               console.log(dataDetail)
                             console.log(record._id);
+
 
                         }}>Invite {record._id}</a>
                     </>

@@ -9,6 +9,7 @@ const UserPage = () => {
     const [user, setUser] = useState([]);
     useEffect(() => {
         loadUser();
+
         }, []);
     const loadUser = async () => {
 
