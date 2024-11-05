@@ -7,7 +7,8 @@ import {useState} from "react";
 const UserTable = (props) => {
     const {user} = props;
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalUpdate, setIsModalUpdate] = useState(false);
+    const [dataUpdate, setDataUpdate] = useState(null);
 
     // const handleClick=() =>{
     //
@@ -41,14 +42,18 @@ const UserTable = (props) => {
             key: 'action',
             render: (_, record) => (
                 < div style={{cursor:"pointer" , display: "flex", gap : "20px"}} >
-                    <EditOutlined style={{color:"orange"}} onClick={()=>setIsModalOpen(true)}/>
+                    <EditOutlined style={{color:"orange"}}
+                                  onClick={()=>{
+                                      setDataUpdate(record);
+                                      setIsModalUpdate(true)
+
+                                  }}/>
                     <DeleteOutlined style={{color:"red"}} />
                 </div>
+
             ),
         },
     ];
-
-
 
 
 
@@ -59,8 +64,10 @@ const UserTable = (props) => {
                    rowKey={"_id"}
             />
             <UpdateUserModal
-                isModalOpen={isModalOpen}
-                setIsModalOpen={setIsModalOpen}
+                isModalUpdate={isModalUpdate}
+                setIsModalUpdate={setIsModalUpdate}
+                setDataUpdate={setDataUpdate}
+                dataUpdate={dataUpdate}
 
             />
         </>
