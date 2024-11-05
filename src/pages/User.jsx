@@ -1,17 +1,16 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import UserTable from "../components/user/user.table.jsx";
 import UserForm from "../components/user/user.form.jsx";
 import {fetchAllUserAPI} from "../service/api.service.js";
-import UpdateUserModal from "../components/user/update.user.modal.jsx";
+
 
 const UserPage = () => {
 
-    const [user, setUser] = useState([{}]);
+    const [user, setUser] = useState([]);
     useEffect(() => {
-        loadUsers();
-
-    }, [])
-    const loadUsers = async () => {
+        loadUser();
+        }, []);
+    const loadUser = async () => {
 
         const res = await fetchAllUserAPI()
 
@@ -24,15 +23,14 @@ const UserPage = () => {
     return (
         <div style={{padding:'20px'}}>
             <UserForm
-                loadUsers={loadUsers}
+                loadUser={loadUser}
             />
             <UserTable
                 user={user}
+                loadUser={loadUser}
             />
 
         </div>
-
-
 
 
     )

@@ -3,25 +3,34 @@ import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import {red} from "@ant-design/colors";
 import UpdateUserModal from "./update.user.modal.jsx";
 import {useState} from "react";
+import UserDetail from "./view.user.detail.jsx";
 
 const UserTable = (props) => {
-    const {user} = props;
-
+    const {user,loadUser} = props;
     const [isModalUpdate, setIsModalUpdate] = useState(false);
     const [dataUpdate, setDataUpdate] = useState(null);
-
-    // const handleClick=() =>{
-    //
-    //     console.log("helllllll");
-    // }
+    //show
+    const [dataDetail, setDataDetail] = useState(null);
+    const [isDetailOpen, setIsDetailOpen] = useState(false);
 
     const columns = [
         {
             title: 'Id',
             dataIndex: '_id',
             render: (_, record) => {
+
                 return(
-                    <a href="#">Invite {record._id}</a>
+                    <>
+                        <a href="#"
+                           onClick={()=>{
+                            setDataDetail(record);
+                            setIsDetailOpen(true);
+                            console.log(record._id);
+
+                        }}>Invite {record._id}</a>
+                    </>
+
+
                 )
             },
 
@@ -56,8 +65,6 @@ const UserTable = (props) => {
     ];
 
 
-
-
     return (<>
             <Table columns={columns}
                    dataSource={user}
@@ -68,8 +75,19 @@ const UserTable = (props) => {
                 setIsModalUpdate={setIsModalUpdate}
                 setDataUpdate={setDataUpdate}
                 dataUpdate={dataUpdate}
+                loadUser={loadUser}
 
             />
+            <UserDetail
+                dataDetail={dataDetail}
+                setDataDetail={setDataDetail}
+                isDetailOpen={isDetailOpen}
+                setIsDetailOpen={setIsDetailOpen}
+
+
+
+            />
+
         </>
     )
 }
