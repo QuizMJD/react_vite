@@ -27,5 +27,9 @@ const fetchAllUserAPI =() => {
 
 
 }
+const deleteUserAPI =(_id) => {
+    const URL_BACKEND = `/api/v1/user/${_id}`;
+    return axiosCustomize.delete(URL_BACKEND)
+}
 
-export { createUserAPI, updateUserAPI, fetchAllUserAPI };
+export { createUserAPI, updateUserAPI, fetchAllUserAPI, deleteUserAPI };
