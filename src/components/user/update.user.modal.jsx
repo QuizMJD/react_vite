@@ -11,7 +11,7 @@ const UpdateUserModal = (props) => {
 
     useEffect(() => {
         // dataUpdate!==null?console.log("start",dataUpdate):console.log("nodata.",dataUpdate);
-        console.log(dataUpdate);
+        // console.log(dataUpdate);
         if(dataUpdate){
             setID(dataUpdate._id);
             setFullName(dataUpdate.fullName);

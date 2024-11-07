@@ -17,7 +17,7 @@ const UserTable = (props) => {
 
     const handleDelete = async (_id) => {
         const res =await deleteUserAPI(_id)
-        console.log(_id)
+        // console.log(_id)
         if(res.data){
             notification.success({
                     message: "update user",
@@ -32,7 +32,7 @@ const UserTable = (props) => {
             })
         }
 
-        console.log(res.data)
+        // console.log(res.data)
 
     }
 
@@ -49,8 +49,8 @@ const UserTable = (props) => {
                            onClick={()=>{
                             setDataDetail(record);
                             setIsDetailOpen(true);
-                               console.log(dataDetail)
-                            console.log(record._id);
+                            //    console.log(dataDetail)
+                            // console.log(record._id);
 
 
                         }}>Invite {record._id}</a>

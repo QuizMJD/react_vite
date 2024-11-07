@@ -1,14 +1,26 @@
 import {Button, Drawer, Table} from "antd";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
 const UserDetail = (props) => {
     const {dataDetail,setDataDetail,isDetailOpen,setIsDetailOpen} = props;
-console.log(">>>.",dataDetail);
-    // useEffect(() => {
-    //     if (dataDetail) {
-    //         console.log("Updated Data Detail: ", dataDetail);  // Log khi `dataDetail` đã được cập nhật
-    //     }
-    // }, [dataDetail]);  // `useEffect` chạy mỗi khi `dataDetail` thay đổi
+    const [selectedFile, setSelectedFile] = useState(null)
+    const [preview, setPreview] = useState(null)
+
+    const handleOnChangeFile=(e)=>{
+        if(!e.target.files || e.target.files.length===0){
+            setSelectedFile(null)
+            setPreview(null)
+            return;
+        }
+        const file = e.target.files[0];
+        if(file){
+            setSelectedFile(file)
+            setPreview(URL.createObjectURL(file))
+
+        }
+
+    }
+    console.log("file here >>>>",preview);
 
 
     return (
@@ -40,14 +52,21 @@ console.log(">>>.",dataDetail);
                     <div style={{fontWeight: 'bold'}}>
                         Avatar
                     </div>
-                    <div>
-                        <img style={{borderRadius: '10%', height: 150, width: 150}}
+                    <div style={{
+                        marginLeft: '10px',
+                        height: "100px", width: "150px",
+                        border: "1px solid #ccc",
+                    }}>
+                        <img style={{height: "100%", width: "100%"}}
+                            // src={`${import.meta.env.VITE_BACKEND_URL}/images/avatar/${dataDetail?.avatar}`}/>
                              src={`${import.meta.env.VITE_BACKEND_URL}/images/avatar/${dataDetail?.avatar}`}/>
                     </div>
+
+
                     <div>
                         <label htmlFor="btnUpdate" style={{
                             display: 'block',
-                            width:"fit-content",
+                            width: "fit-content",
                             marginTop: '15px',
                             padding: '5px 10px',
                             backgroundColor: 'orange',
@@ -56,8 +75,19 @@ console.log(">>>.",dataDetail);
                         }}
 
                         >Update Avatar</label>
-                        <input type="file" hidden id="btnUpdate"  />
+                        <input type="file" hidden id="btnUpdate"
+                               onChange={(e) => handleOnChangeFile(e)}
+                        />
                     </div>
+                    {preview&&<div style={{
+                        marginLeft: '10px',
+                        height: "100px", width: "150px",
+                        border: "1px solid #ccc",
+                    }}>
+                        <img style={{height: "100%", width: "100%"}}
+                            // src={`${import.meta.env.VITE_BACKEND_URL}/images/avatar/${dataDetail?.avatar}`}/>
+                             src={preview}/>
+                    </div>}
 
                 </div>
                 {/*<Button type='primary'>Update Avatar</Button>*/}
