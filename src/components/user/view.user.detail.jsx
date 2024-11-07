@@ -49,18 +49,21 @@ const UserDetail = (props) => {
                     <div>
                         Phone: {dataDetail?.phone}
                     </div>
-                    <div style={{fontWeight: 'bold'}}>
-                        Avatar
-                    </div>
-                    <div style={{
-                        marginLeft: '10px',
-                        height: "100px", width: "150px",
-                        border: "1px solid #ccc",
-                    }}>
-                        <img style={{height: "100%", width: "100%"}}
-                            // src={`${import.meta.env.VITE_BACKEND_URL}/images/avatar/${dataDetail?.avatar}`}/>
-                             src={`${import.meta.env.VITE_BACKEND_URL}/images/avatar/${dataDetail?.avatar}`}/>
-                    </div>
+
+                    {dataDetail&&<div>
+                        <div style={{fontWeight: 'bold'}}>
+                            Avatar
+                        </div>
+                        <div style={{
+                            marginLeft: '10px',
+                            height: "100px", width: "150px",
+                            border: "1px solid #ccc",
+                        }}>
+                            <img style={{height: "100%", width: "100%"}}
+                                // src={`${import.meta.env.VITE_BACKEND_URL}/images/avatar/${dataDetail?.avatar}`}/>
+                                 src={`${import.meta.env.VITE_BACKEND_URL}/images/avatar/${dataDetail.avatar}`}/>
+                        </div>
+
 
 
                     <div>
@@ -79,6 +82,7 @@ const UserDetail = (props) => {
                                onChange={(e) => handleOnChangeFile(e)}
                         />
                     </div>
+                    </div>}
                     {preview&&<div style={{
                         marginLeft: '10px',
                         height: "100px", width: "150px",
