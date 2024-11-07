@@ -24,11 +24,13 @@ const UserDetail = (props) => {
 
 
     return (
-        <>
+
+
 
             <Drawer width={"40vw"}
-                title="Chi tiết User"
-                    onClose={() => {setIsDetailOpen(false)
+                    title="Chi tiết User"
+                    onClose={() => {
+                        setIsDetailOpen(false)
                         setDataDetail(null)
                     }
                     }
@@ -36,21 +38,23 @@ const UserDetail = (props) => {
                     open={isDetailOpen}
 
             >
+                {dataDetail ?
+                <>
                 <div style={{display: 'flex', flexDirection: 'column', gap: '20px'}}>
                     <div>
-                        ID:{dataDetail?._id}
+                        ID:{dataDetail._id}
                     </div>
                     <div>
-                        Full Name:{dataDetail?.fullName}
+                        Full Name:{dataDetail.fullName}
                     </div>
                     <div>
-                        Email: {dataDetail?.email}
+                        Email: {dataDetail.email}
                     </div>
                     <div>
-                        Phone: {dataDetail?.phone}
+                        Phone: {dataDetail.phone}
                     </div>
 
-                    {dataDetail&&<div>
+                    <div>
                         <div style={{fontWeight: 'bold'}}>
                             Avatar
                         </div>
@@ -65,25 +69,24 @@ const UserDetail = (props) => {
                         </div>
 
 
+                        <div>
+                            <label htmlFor="btnUpdate" style={{
+                                display: 'block',
+                                width: "fit-content",
+                                marginTop: '15px',
+                                padding: '5px 10px',
+                                backgroundColor: 'orange',
+                                borderRadius: '5px',
+                                cursor: 'pointer',
+                            }}
 
-                    <div>
-                        <label htmlFor="btnUpdate" style={{
-                            display: 'block',
-                            width: "fit-content",
-                            marginTop: '15px',
-                            padding: '5px 10px',
-                            backgroundColor: 'orange',
-                            borderRadius: '5px',
-                            cursor: 'pointer',
-                        }}
-
-                        >Update Avatar</label>
-                        <input type="file" hidden id="btnUpdate"
-                               onChange={(e) => handleOnChangeFile(e)}
-                        />
+                            >Update Avatar</label>
+                            <input type="file" hidden id="btnUpdate"
+                                   onChange={(e) => handleOnChangeFile(e)}
+                            />
+                        </div>
                     </div>
-                    </div>}
-                    {preview&&<div style={{
+                    {preview && <div style={{
                         marginLeft: '10px',
                         height: "100px", width: "150px",
                         border: "1px solid #ccc",
@@ -94,10 +97,19 @@ const UserDetail = (props) => {
                     </div>}
 
                 </div>
-                {/*<Button type='primary'>Update Avatar</Button>*/}
+            </>
+            :
+            <>
+                <h1>Không có dữ liệu</h1>
+            </>
+
+
+
+                }
+
             </Drawer>
-        </>
     )
+
 
 }
 export default UserDetail
